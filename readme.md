@@ -34,10 +34,7 @@ Uses the Eleos GET POI Layers API, to display that information in a blank spread
 ## 4. PUT Custom POI Layers
 Uses the Eleos PUT POI Layers API to PUT Custom POI Layers into Eleos Platform Data
 
-## 5. DELETE Custom POI Layers
-Uses the Eleos DELETE POI Layers API to DELETE a Custom POI Layer form the Eleos Platform Data.
-
-## 6. PUT Individual POIs
+## 5. PUT Individual POIs
 Uses the Eleos PUT POI API to send a set of POIs to the Eleos Platform Data.
 
 
