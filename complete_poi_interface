@@ -112,7 +112,7 @@ async function main(workbook: ExcelScript.Workbook): Promise<void> {
           }
         };
   
-        const response = await fetch('https://platform.driveaxleapp.com/api/v1/poi_layers/custom', myInit);
+        const response = await fetch('https://platform.driveaxleapp.com/api/v1/poi_layers/', myInit);
   
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -209,7 +209,7 @@ async function main(workbook: ExcelScript.Workbook): Promise<void> {
           };
   
           try {
-            const response = await fetch('https://platform.driveaxleapp.com/api/v1/poi_layers/custom', myInit);
+            const response = await fetch('https://platform.driveaxleapp.com/api/v1/poi_layers/', myInit);
   
             if (!response.ok) {
               let errorMessage = "Error: " + response.status;
@@ -239,7 +239,7 @@ async function main(workbook: ExcelScript.Workbook): Promise<void> {
         }
       };
   
-      const response = await fetch('https://platform.driveaxleapp.com/api/v1/poi_layers/custom/' + code, myInit);
+      const response = await fetch('https://platform.driveaxleapp.com/api/v1/poi_layers//' + code, myInit);
   
       if (!response.ok) {
         let errorMessage = "Error in delete layer: " + response.status;
@@ -328,9 +328,9 @@ async function main(workbook: ExcelScript.Workbook): Promise<void> {
     /********************************** Spreadsheet Setup ********************************/
   
     // Check if the "Add POIs" worksheet exists.
-    const sheet = workbook.getWorksheet("Custom API Layers");
+    const sheet = workbook.getWorksheet("Custom Layer Interface");
     if (!sheet) {
-      console.log(`No worksheet named "Get Custom Layers" in this workbook.`);
+      console.log(`No worksheet named "Custom Layer Interface" in this workbook.`);
       return;
     }
   
