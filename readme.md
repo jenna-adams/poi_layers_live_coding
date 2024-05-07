@@ -1,4 +1,4 @@
-# # Excel Script Toolbox for POI Control
+# Excel Script Toolbox for POI Control
 
 Welcome to the Excel Script repository designed to facilitate control over Eleos Platform Data, specifically POI Layers, and Individual POIs, using Excel.
 
