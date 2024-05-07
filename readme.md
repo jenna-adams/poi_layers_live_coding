@@ -38,3 +38,6 @@ Uses the Eleos PUT POI Layers API to PUT Custom POI Layers into Eleos Platform D
 Uses the Eleos PUT POI API to send a set of POIs to the Eleos Platform Data.
 
 
+### Additional Information
+Please remember to refer to the [Eleos POI API](https://dev.eleostech.com/platform/platform.html#tag/POIs) when making changes to the above scripts.
+
