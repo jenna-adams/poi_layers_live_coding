@@ -34,7 +34,7 @@ Uses the Eleos GET POI Layers API, to display that information in a blank spread
 ## 4. PUT Custom POI Layers
 Uses the Eleos PUT POI Layers API to PUT Custom POI Layers into Eleos Platform Data.
 
-Example:
+Example Body:
 ```json
 [
    {
@@ -61,59 +61,85 @@ Example:
 ## 5. PUT Individual POIs
 Uses the Eleos PUT POI API to send a set of POIs to the Eleos Platform Data.
 
-Example:
+Example Body:
 ```json
 [
-   {
-       "name": "Blue Beacon",
-       "location": {
-           "longitude": "-84.48969",
-           "latitude": "33.78546"
-       },
-       "full_address": "3105 Donald Lee Hollowell Pkwy NW Atlanta, GA 30318",
-       "data": {
-           "tags": [
-               "cat"
-           ],
-           "street_name_suffix": "NW",
-           "street_name_street_type": "Pkwy",
-           "street_name_base_name": "Donald Lee Hollowell",
-           "street_address": "3105 Donald Lee Hollowell NW Pkwy",
-           "state": "Georgia",
-           "routing_long": -84.48969,
-           "routing_lat": 33.78546,
-           "postal_code": "30318",
-           "phone_number": "4047928996",
-           "icon_ref": "cat",
-           "house_number": "3105",
-           "here_place_id": "840dn5bj-0983e55542cd43acb8fc4638ca2a206e",
-           "here_location_id": "NT_RFVAkxDCcZm.aYFwprOOFD_zEDM1A",
-           "fax_number": "404-799-7255",
-           "display_long": -84.4886,
-           "display_lat": 33.78664,
-           "details": "Undercarraige Rinse",
-           "country": "USA",
-           "city": "Atlanta",
-           "cat_scale": true
-       },
-       "categories": [
-           "Car Wash-Detailing",
-           "CAT Scale",
-           "Truck Wash",
-           "blue_beacon"
-       ],
-       "address": {
-           "street_name": "Donald Lee Hollowell NW Pkwy",
-           "state": "Georgia",
-           "postal_code": "30318",
-           "house_number": "3105",
-           "country": "USA",
-           "city": "Atlanta"
-       }
-   }
+    {
+        "id": "112",
+        "name": "Blue Beacon #112",
+        "location": {
+            "longitude": "-84.339417",
+            "latitude": "33.659323"
+        },
+        "full_address": "4170 Old McDonough Rd, Conley, GA 30288",
+        "data": {
+            "details": "Phone Number: 217-342-4303"
+        },
+        "categories": [
+            "blue_beacon"
+        ]
+    }
 ]
 ```
 
 
 # Additional Information
+
+## Juction Type and Predicates
+These fields can cause some confusion, here's some background.
+The `junctionType` and `predicates` fields are used to define how filtering rules are applied to determine whether a POI (Point of Interest) should be included in the layer.
+
+Here's a breakdown:
+- **`junctionType`**: This defines how multiple predicates should be combined. It has two possible values:
+  - `"AND"`: All predicates must be true for the POI to be included.
+  - `"OR"`: At least one predicate must be true for the POI to be included.
+
+- **`predicates`**: This is an array of filter conditions that determine which POIs belong to the layer. Each predicate typically has:
+  - A `fieldName`: The attribute being checked (e.g., `"category"`, `"name"`, etc.).
+  - An `operator`: The comparison type (e.g., `"EQUALS"`, `"CONTAINS"`, `"GREATER_THAN"`).
+  - A `value`: The expected value for the condition.
+
+### Example  
+Let's say you want to create a POI layer that includes truck stops **AND** have more than 50 parking spaces. You’d use:
+
+```json
+{
+  "junctionType": "AND",
+  "predicates": [
+    {
+      "fieldName": "category",
+      "operator": "EQUALS",
+      "value": "Truck Stop"
+    },
+    {
+      "fieldName": "parkingSpaces",
+      "operator": "GREATER_THAN",
+      "value": 50
+    }
+  ]
+}
+```
+
+Alternatively, if you want to include all **Truck Stops OR Rest Areas**, you’d use:
+
+```json
+{
+  "junctionType": "OR",
+  "predicates": [
+    {
+      "fieldName": "category",
+      "operator": "EQUALS",
+      "value": "Truck Stop"
+    },
+    {
+      "fieldName": "category",
+      "operator": "EQUALS",
+      "value": "Rest Area"
+    }
+  ]
+}
+```
+
+
+
 Please remember to refer to the [Eleos POI API](https://dev.eleostech.com/platform/platform.html#tag/POIs) when making changes to the above scripts.
