@@ -96,7 +96,7 @@ Here's a breakdown:
   - `"OR"`: At least one predicate must be true for the POI to be included.
 
 - **`predicates`**: This is an array of filter conditions that determine which POIs belong to the layer. Each predicate typically has:
-  - A `fieldName`: The attribute being checked (e.g., `"category"`, `"name"`, etc.).
+  - A `property`: The attribute being checked (e.g., `"category"`, `"name"`, etc.). Can be any top-level field name, or any property in the POI 'data' field.
   - An `operator`: The comparison type (e.g., `"EQUALS"`, `"CONTAINS"`, `"GREATER_THAN"`).
   - A `value`: The expected value for the condition.
 
@@ -108,12 +108,12 @@ Let's say you want to create a POI layer that includes truck stops **AND** have 
   "junctionType": "AND",
   "predicates": [
     {
-      "fieldName": "category",
+      "property": "category",
       "operator": "EQUALS",
       "value": "Truck Stop"
     },
     {
-      "fieldName": "parkingSpaces",
+      "property": "parkingSpaces",
       "operator": "GREATER_THAN",
       "value": 50
     }
@@ -128,12 +128,12 @@ Alternatively, if you want to include all **Truck Stops OR Rest Areas**, you’d
   "junctionType": "OR",
   "predicates": [
     {
-      "fieldName": "category",
+      "property": "category",
       "operator": "EQUALS",
       "value": "Truck Stop"
     },
     {
-      "fieldName": "category",
+      "property": "category",
       "operator": "EQUALS",
       "value": "Rest Area"
     }
