@@ -110,12 +110,12 @@ Let's say you want to create a POI layer that includes truck stops **AND** have 
     {
       "property": "category",
       "operator": "EQUALS",
-      "value": "Truck Stop"
+      "string_value": "Truck Stop"
     },
     {
       "property": "parkingSpaces",
       "operator": "GREATER_THAN",
-      "value": 50
+      "number_value": 50
     }
   ]
 }
@@ -130,12 +130,12 @@ Alternatively, if you want to include all **Truck Stops OR Rest Areas**, you’d
     {
       "property": "category",
       "operator": "EQUALS",
-      "value": "Truck Stop"
+      "string_value": "Truck Stop"
     },
     {
       "property": "category",
       "operator": "EQUALS",
-      "value": "Rest Area"
+      "string_value": "Rest Area"
     }
   ]
 }
