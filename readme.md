@@ -84,6 +84,7 @@ Example Body:
 
 
 # Additional Information
+Please remember to refer to the [Eleos POI API](https://dev.eleostech.com/platform/platform.html#tag/POIs) when making changes to the above scripts.
 
 ## Juction Type and Predicates
 These fields can cause some confusion, here's some background.
@@ -139,7 +140,3 @@ Alternatively, if you want to include all **Truck Stops OR Rest Areas**, you’d
   ]
 }
 ```
-
-
-
-Please remember to refer to the [Eleos POI API](https://dev.eleostech.com/platform/platform.html#tag/POIs) when making changes to the above scripts.
